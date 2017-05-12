@@ -4,8 +4,13 @@ some native protocol for web call client app
 ## How to use
 
 ```JavaScript
+
+var webClientProtocol = new webClientProtocol();
+
 webClientProtocol.sms('09xx8xx3xx', 'Hello');
 ```
+
+New webClientProtocol object
 
 Then on mobile web call this method can call SMS app
 
