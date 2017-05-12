@@ -13,8 +13,11 @@ Then on mobile web call this method can call SMS app
 
 ### sms(number, msg)
 
-* number   [String || Number][Require] - tel phone number
-* msg      [String][Option]            - SMS message
+| Name | Type | Require | Desc |
+|---|---|---|---|
+| number | String / Number | Require | tel phone number |
+| msg    | String          | Option  | SMS message      |
+
 
 ```JavaScript
 // example
@@ -23,7 +26,9 @@ webClientProtocol.sms('09xx8xx3xx', 'Hello');
 
 ### tel(number)
 
-* number   [String || Number][Require] - tel phone number
+| Name | Type | Require | Desc |
+|---|---|---|---|
+| number | String / Number | Require | tel phone number |
 
 ```JavaScript
 // example
@@ -33,11 +38,14 @@ webClientProtocol.tel('09xx8xx3xx');
 ### mailto(emailObject)
 
 * emailObject[Object]
-    * email   [String][Require] - e-mail address
-    * cc      [String][Option]  - carbon copy e-mail address
-    * bcc     [String][Option]  - blind carbon copy e-mail address
-    * subject [String][Option]  - subject of e-mail
-    * body    [String][Option]  - content of e-mail
+
+| Name | Type | Require | Desc |
+|---|---|---|---|
+| email   | String | Require |  e-mail address                   |
+| cc      | String | Option  |  carbon copy e-mail address       |
+| bcc     | String | Option  |  blind carbon copy e-mail address |
+| subject | String | Option  |  subject of e-mail                |
+| body    | String | Option  |  content of e-mail                |
 
 ```JavaScript
 // example
