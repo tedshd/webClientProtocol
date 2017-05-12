@@ -48,29 +48,29 @@
             var arr = [],
                 query = '';
             if (emailObject.cc) {
-                arr.push(emailObject.cc);
+                arr.push(['cc' , emailObject.cc]);
             }
             if (emailObject.bcc) {
-                arr.push(emailObject.bcc);
+                arr.push(['bcc' , emailObject.bcc]);
             }
             if (emailObject.subject) {
-                arr.push(emailObject.subject);
+                arr.push(['subject' , emailObject.subject]);
             }
             if (emailObject.body) {
-                arr.push(emailObject.body);
+                arr.push(['body' , emailObject.body]);
             }
             if (arr.length) {
                 for (var i = 0; i < arr.length; i++) {
                     if (i === 0) {
                         query = '?';
                     }
-                    query = query + arr[i];
+                    query = query + arr[i][0] + '=' + encodeURIComponent(arr[i][1]);
                     if (i !== (arr.length - 1)) {
                         query = query + '&';
                     }
                 }
             }
-            protocol = 'mailto:' + email + query;
+            protocol = 'mailto:' + emailObject.email + query;
             location.href = protocol;
         }
         this.sms = sms;
