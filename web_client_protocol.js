@@ -75,7 +75,7 @@
         }
         this.sms = sms;
         this.tel = tel;
-        this.mail = mailto;
+        this.mailto = mailto;
     }
     window.webClientProtocol = webClientProtocol;
 })();
