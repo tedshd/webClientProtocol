@@ -114,6 +114,8 @@
 <script src="./web_client_protocol.js"></script>
 <script>
 
+var webClientProtocol = new webClientProtocol();
+
 document.querySelector('#sms').addEventListener('click', function (e) {
     webClientProtocol.sms(document.querySelector('#sms_number').value, document.querySelector('#message').value);
 });
