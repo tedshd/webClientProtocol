@@ -25,11 +25,11 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Phone Number</label>
-                        <input id="number" type="number" class="form-control" placeholder="Telphone">
+                        <label for="sms_number">Phone Number</label>
+                        <input id="sms_number" type="number" class="form-control" placeholder="Telphone">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Message</label>
+                        <label for="message">Message</label>
                         <textarea name="" id="message" class="form-control" cols="30" rows="10" placeholder="Message"></textarea>
                     </div>
                 </form>
@@ -42,12 +42,96 @@
     </div>
 </div>
 
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#telModal">call phone</button>
+
+<!-- Modal -->
+<div class="modal fade" id="telModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Call phone</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="tel_number">Phone Number</label>
+                        <input id="tel_number" type="number" class="form-control" placeholder="Telphone">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="tel" type="button" class="btn btn-primary">Call</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#mailModal">send mail</button>
+
+<!-- Modal -->
+<div class="modal fade" id="mailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Send mail</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="mail">Email</label>
+                        <input id="mail" type="email" class="form-control" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="cc">Email CC</label>
+                        <input id="cc" type="email" class="form-control" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="bcc">Email BCC</label>
+                        <input id="bcc" type="email" class="form-control" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="sub">Subject</label>
+                        <input id="sub" type="text" class="form-control" placeholder="subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Content</label>
+                        <textarea name="" id="body" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button id="email" type="button" class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 <script src="./web_client_protocol.js"></script>
 <script>
 
 document.querySelector('#sms').addEventListener('click', function (e) {
-    webClientProtocol.sms(document.querySelector('#number').value, document.querySelector('#message').value);
-})
+    webClientProtocol.sms(document.querySelector('#sms_number').value, document.querySelector('#message').value);
+});
+
+document.querySelector('#tel').addEventListener('click', function (e) {
+    webClientProtocol.tel(document.querySelector('#tel_number').value);
+});
+
+document.querySelector('#email').addEventListener('click', function (e) {
+    webClientProtocol.mailto({
+        'email': document.querySelector('#mail').value,
+        'cc': document.querySelector('#cc').value,
+        'bcc': document.querySelector('#bcc').value,
+        'subject': document.querySelector('#sub').value,
+        'body': document.querySelector('#body').value
+    });
+});
+
+
 </script>
 </html>
